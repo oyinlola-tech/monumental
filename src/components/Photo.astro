@@ -1,5 +1,5 @@
 ---
-const { src, alt, class: className = '', loading = 'lazy', sizes = '(max-width: 760px) 92vw, 33vw' } = Astro.props;
+const { src, alt, class: className = '', loading = 'lazy', fetchpriority, sizes = '(max-width: 760px) 92vw, 33vw' } = Astro.props;
 const sourceWidths: Record<string, number> = {
   '/assets/lily6.webp': 1080,
   '/assets/lily9.webp': 810,
@@ -16,4 +16,4 @@ const srcset = width
   ? [...variants.map((candidate) => `${src.replace(/\.webp$/, `-${candidate}w.webp`)} ${candidate}w`), `${src} ${width}w`].join(', ')
   : undefined;
 ---
-<img class={className} src={src} srcset={srcset} sizes={sizes} alt={alt} loading={loading} decoding="async" />
+<img class={className} src={src} srcset={srcset} sizes={sizes} alt={alt} loading={loading} fetchpriority={fetchpriority} decoding="async" />
